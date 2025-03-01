@@ -5,10 +5,11 @@ Sample Spring boot server to receive cache updates from a client for setting up 
 This server can be deployed as a headless service by specifying `clusterIP` to `None` in the _Serivce_ specs for the server. Refer to [server-b.yaml][2]. 
 
 <h2>Prerequisites</h2>
+
 1. A docker environment. For this example, I setup Docker Desktop on Windows 10
 2. Kubernetes with kubectl CLI
-3. A Java IDE such as IntelliJ to build the project locally with Maven and JDK 21.
-4. A client to send random data 
+3. A Java IDE such as IntelliJ to build the project locally with Maven and JDK 21
+4. A client to send random cache data to this server(from a within the same cluster). Refer to [client-a][1]
 
 <h2>Steps to deploy</h2>
 
@@ -36,10 +37,13 @@ This server can be deployed as a headless service by specifying `clusterIP` to `
 
    ![kubectl_get_pods](https://github.com/Kubelix/server-b/blob/master/utils/images/kubectl_get_pods.png)
 
-6. 
-  
+6. Check logs for one of the pods to verify if the server is running
 
-7.   
+   ![server_b_logs](https://github.com/Kubelix/server-b/blob/master/utils/images/server_b_logs.png)
+
+7. Deploy a client in the same cluster as mentioned in prerequisites. Invoking requests from this client will generate logs as below:
+
+   ![client_request_logs](https://github.com/Kubelix/server-b/blob/master/utils/images/server_b_request_logs.png)
 
 
 [1]: https://github.com/Kubelix/client-a
